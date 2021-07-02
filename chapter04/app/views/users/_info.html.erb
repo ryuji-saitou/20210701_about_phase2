@@ -12,13 +12,19 @@
   </tr>
   <tr>
 	  <th>follows</th>
-	  <!--要修正-->
-	  <th>数字</th>
+	  <th>
+	    <%= link_to user_followings_path(user) do %>
+  	    <%= user.followings.count %>
+  	  <% end %>
+  	 </th>
   </tr>
   <tr>
-	  <!--要修正-->
 	  <th>followers</th>
-	  <th>数字</th>
+	  <th>
+	    <%= link_to user_followers_path(user) do %>
+	      <%= user.followers.count %>
+  	  <% end %>
+	   </th>
   </tr>
 </table>
 <div class='row'>

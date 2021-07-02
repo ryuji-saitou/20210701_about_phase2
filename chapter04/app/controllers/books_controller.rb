@@ -8,13 +8,12 @@ class BooksController < ApplicationController
     @user = User.find(@book.user_id)
     @book_comments = @book.book_comments
     @book_comment = BookComment.new
-    p @book_comments
-    p @book_comments
   end
 
   def index
     @books = Book.all
-    @book = Book.new
+    @book_new = Book.new
+    @book = Book.new #これが無いとerrorsメソッドにエラーが出る / 2回目で定義を要修正
   end
 
   def create
