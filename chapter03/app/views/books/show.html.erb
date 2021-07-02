@@ -23,7 +23,10 @@
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
           <% end %>
-          <td>❤︎favolite♡</td>
+          <!--ここからいいね機能-->
+          <td>
+            <%= render "favorites/favorite", book: @book %>
+          <!--ここまでいいね機能-->
           <td>コメント数: <%= @book_comments.count %></td>
         </tr>
       </table>
