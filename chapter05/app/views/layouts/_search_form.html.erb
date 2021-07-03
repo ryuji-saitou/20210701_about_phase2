@@ -1,0 +1,10 @@
+<%= search_form_for(@q, url:seach_path) do |f| %>
+  <!--[要修正] name_cont = ユーザー名検索-->
+  <div class="field">
+    <%= f.label :name_cont, "User Search", class:"form-group" %><br>
+    <%= f.search_field :name_cont, placeholder: "Enter username...", class:"form-control" %><br>
+    <p>プルダウン:検索対象</p>
+    <p>プルダウン:検索手法</p>
+    <%= f.submit "検索", class:"btn btn-sm btn-default" %>
+  </div>
+<% end %>
