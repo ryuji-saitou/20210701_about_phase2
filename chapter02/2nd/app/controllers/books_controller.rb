@@ -54,7 +54,7 @@ class BooksController < ApplicationController
     user = book.user
     unless
       user == current_user
-      redirect_to book_path(book)
+      redirect_to books_path
     end
   end
 
