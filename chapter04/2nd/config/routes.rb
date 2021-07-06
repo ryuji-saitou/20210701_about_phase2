@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
-  
+
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
-    get "following_user" => "relationships#following_user", as: "following_user" 
-    get "followed_user" => "relationships#followed_user", as: "followed_user" 
+    get "follower_user" => "relationships#follower_index", as: "follower_index"
+    get "followed_user" => "relationships#followed_index", as: "followed_index"
   end
 end

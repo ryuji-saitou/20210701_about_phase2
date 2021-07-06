@@ -13,9 +13,9 @@ class User < ApplicationRecord
   # フォロワーを取得
 	has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   # フォローしている人を取得
-	has_many :follower_user, through: :follower, source: :followed
+	has_many :followings, through: :follower, source: :followed
   # フォローされている人を取得
-	has_many :followed_user, through: :followed, source: :follower
+	has_many :followers, through: :followed, source: :follower
 # ~~~ここまでフォロー・フォロワー機能~~~
 
   attachment :profile_image, destroy: false
@@ -25,13 +25,13 @@ class User < ApplicationRecord
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
-
+  # ユーザーのフォロー解除
   def unfollow(user_id)
     follower.find_by(followed_id: user_id).destroy
   end
-
+  # フォローしているユーザーに(user)は含まれているか？
   def following?(user)
-    follower_user.include?(user)
+    followings.include?(user)
   end
 # ~~~ここまでフォロー・フォロワー機能~~~
 
