@@ -1,0 +1,5 @@
+$("#favorite-btn-<%= @book.id %>").html("<%= j(render partial: "favorites/favorite-btn", locals: {book: @book}) %>");
+console.log("#favorite-btn-<%= @book.id %>")
+<!--セレクタ：$("#favorite-btn-<%# book.id %>")-->
+<!--メソッド：.html-->
+<!--パラメータ(html)：("<%#= j(render partial: "favorites/favorite-btn", book: book) %>");-->
