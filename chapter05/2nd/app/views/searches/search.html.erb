@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h3>Search result 「model = <%= @model.capitalize %>」 / 「word = <%= @value %>」</h3>
+      <table class="table">
+        <% if @model == "user" %>
+          <tr>
+            <th></th>
+            <th>User name</th>
+            <th>introduction</th>
+            <th></th>
+          </tr>
+          <% @datas.each do |data| %>
+          <tr>
+            <td><%= attachment_image_tag data, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg" %></td>
+            <td><%= data.name %></td>
+            <td><%= data.introduction %></td>
+            <td>
+              <%= link_to "show", user_path(data) %>
+            </td>
+          </tr>
+          <% end %>
+        <% elsif @model == "book" %>
+          <tr>
+            <th class="text-center">User</th>
+            <th>Book title</th>
+            <th>opinion</th>
+            <th></th>
+          </tr>
+          <% @datas.each do |data| %>
+            <tr>
+              <td class="align-middle text-center">
+                <%= attachment_image_tag data.user, :profile_image, :fill, 30, 30, fallback: "no-image-icon.jpg" %>
+                <%= data.user.name %>
+              </td>
+              <td><%= data.title %></td>
+              <td><%= data.body %></td>
+              <td>
+                <%= link_to "show", book_path(data) %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
